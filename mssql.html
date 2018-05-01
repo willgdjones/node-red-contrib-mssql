@@ -40,9 +40,14 @@
         <input type="text" id="node-config-input-database">
     </div>
     <div class="form-row">
-        <label for="node-config-input-encyption"><i class="fa fa-user"></i> Use Encryption?</label>
-        <input type="checkbox" id="node-config-input-encyption">
+        <label for="node-config-input-encryption"><i class="fa fa-user"></i> Use Encryption?</label>
+        <input type="checkbox" id="node-config-input-encryption">
         <div class="form-tips">SQL Databases hosted on Azure will need this checked</div>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-useUTC"><i class="fa fa-clock-o"></i> Assume UTC?</label>
+        <input type="checkbox" id="node-config-input-useUTC">
+        <div class="form-tips">Times will be assumed to be UTC by default.</div>
     </div>
 </script>
 
@@ -52,16 +57,18 @@
         defaults: {
             name: {value:""},
             server: {value:""},
-            encyption:{value:true},
-            database: {value:""}
+            encryption: {value:true},
+            database: {value:""},
+            useUTC: {value:true}
         },
         inputs:0,
         outputs:0,
         credentials: {
             username: {type:"text"},
             password: {type:"password"},
-            domain: {type:"text"}
+            domain: {type:"text"},
         },
+
         label: function() {
             return this.name || "MSSQL-CN";
         }

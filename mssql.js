@@ -3,6 +3,8 @@ module.exports = function(RED) {
 	var mustache = require('mustache');
 	var sql = require('mssql');
 
+
+
 	function connection(config) {
 	    RED.nodes.createNode(this, config);
 
@@ -10,22 +12,16 @@ module.exports = function(RED) {
 	    this.config = {
             user: node.credentials.username,
             password: node.credentials.password,
-						domain: node.credentials.domain,
+			domain: node.credentials.domain,
             server: config.server,
             database: config.database,
             options: {
-                           encrypt : config.encyption,
-                           useUTC: config.useUTC
-                       }
+               encrypt : config.encryption,
+               useUTC: config.useUTC
+           }
         };
 
-
-	    this.connection = sql;
-			/*
-			node.on('close',function(){
-   			node.pool.close(function(){});
-   		})
-			*/
+	    this.connection = sql;	
 		}
 
   	RED.nodes.registerType('MSSQL-CN', connection, {
